@@ -80,7 +80,7 @@ val_ds = val_ds.cache().prefetch(buffer_size=AUTOTUNE)
 
 """
 
-CLASSES=6 #Numero de 'estrelas' atribuidas a cada botijao
+CLASSES=3 #Numero de 'estrelas' atribuidas a cada botijao
 
 CNN_ARCHITECTURE = "Resnet"
 
@@ -163,6 +163,10 @@ if CNN_ARCHITECTURE=="Inception":
     model.summary()
 
 """#%% COMPILACAO"""
+
+keras.optimizers.Adam(
+    learning_rate=0.000001
+)
 
 model.compile(optimizer='adam',
               loss=tf.keras.losses.SparseCategoricalCrossentropy(),
